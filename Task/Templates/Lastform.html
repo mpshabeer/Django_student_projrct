@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Form</title>
+</head>
+
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+                .btn{
+  width: 35%;
+  {#background: none;#}
+  border: 2px solid black;
+  color: black;
+  padding: 7px;
+  font-size: 20px;
+  {#cursor: pointer;#}
+  margin: 12px 0;
+}
+    </style>
+<body>
+    <h1>Customer Application Form</h1>
+    <form action="#" method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea><br><br>
+
+        <label for="department">Department:</label>
+        <select id="department" name="department" onchange="selectcity(value)" required>
+          <option value="" selected disabled>Choose Cource</option>
+            <option value="ComputerScience">Computer Science</option>
+            <option value="Commerce">Commerce</option>
+             <option value="Arts">Arts</option>
+             <option value="Management">Management</option>
+
+            <!-- Add more district options here -->
+        </select><br><br>
+
+        <label for="courceselect">Course:</label>
+        <select id="courceselect" name="courceselect" required>
+            <!-- Add options for branches based on the selected district using JavaScript -->
+        </select><br><br>
+
+        <label for="purpose">Purpose:</label>
+        <select id="purpose" name="purpose" required>
+            <option value="Savings Account">For Enquiry</option>
+            <option value="Current Account">Cource Fee </option>
+             <option value="Current Account">Cource Registration </option>
+            <option value="Current Account">Apply For Exam </option>
+            <!-- Add more account type options here -->
+        </select><br><br>
+
+        <label>Materials Provide:</label><br>
+        <input type="checkbox" id="Notebook" name="materials" value="Note Book">
+        <label for="Notebook">Note Book</label><br>
+        <input type="checkbox" id="Pen" name="materials" value="Pen">
+        <label for="Pen">Pen</label><br>
+        <input type="checkbox" id="Pencil" name="materials" value="Pencil">
+        <label for="Pencil">Pencil</label><br>
+        <input type="checkbox" id="cheque-book" name="materials" value="Exam Papers">
+        <label for="cheque-book">Exam Papers</label><br><br>
+
+        <center><input type="submit" value="Submit" class="btn"></center>
+    </form>
+
+
+
+    <script>
+const Departvisecource={
+    ComputerScience:["BTECH CSE","MCA","BCA","BSC Computer Science"],
+    Commerce:["CA","CMA","ACCA","BCOM"],
+    Arts:["BA Enlish","BA Malyalam","MA Malyalam"],
+    Management:["BBA","MBA"],
+}
+function selectcity(value){
+
+    if(value.length==0){
+        document.getElementById("courceselect").innerHTML="<option></option>"
+    }
+    else{
+        allcourse="";
+        for(cource in Departvisecource[value]){
+            allcourse+="<option>"+Departvisecource[value][cource]+"</option>"
+        }
+        document.getElementById("courceselect").innerHTML=allcourse;
+    }
+}
+
+
+    </script>
+</body>
+</html>

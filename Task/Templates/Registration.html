@@ -1,0 +1,73 @@
+<html>
+<head> <style>
+            .btnlogin {
+                height: 30px;
+                width: 200px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 50px;
+                background-color: rgb(47, 0, 255);
+                color: white;
+            }
+            .in {
+                border-radius: 50px;
+                display: block;
+                border-color: rgb(185, 177, 177);
+                margin-left: auto;
+                margin-top: 30px;
+                margin-right: auto;
+                width: 90%;
+                padding-left: 20px;
+                height: 40px;
+            }
+            .foot {
+                padding-top: 5px;
+                padding-left: 25px;
+            }
+            .lgntble {
+                border: 5px solid rgb(174, 152, 192);
+                height: 450px;
+                margin-top: 0;
+                width: 300px;
+            }
+            body {
+            background-color: #f8f9fa;
+        }
+        </style></head><body>
+<center>
+ <form  method="POST" style="padding-top: 50px; align-content: center;">
+         {% csrf_token %}
+                <div class="lgntble">
+                    <h1 style="background-color: blueviolet; height: 80px; color: #ffffff; margin-top: 0; padding-top:20px;">REGISTRATION</h1>
+
+                    <div style="padding-top: 0px;">
+                        <input class="in" placeholder="username" type="text" name="username"  required>
+                    </div>
+
+
+                    <div>
+                        <input class="in" type="password" placeholder="Password" name="password" required>
+                    </div>
+
+                    <div>
+                        <input class="in" type="password" placeholder="conform Password" name="cpassword"  required>
+                    </div>
+                    <small style="text-align: center; color: red;" id="warnpassword"></small>
+
+
+                    <div style="margin-top: 20px;">
+                        <input class="btnlogin" type="submit" value="Register" >
+                    </div>
+                    <div class="foot" style="margin-top: 20px;">
+                        Have an account? <a href="Login" style="text-decoration: none; float: right; padding-right: 25px;"> Sign In now</a>
+                    </div>
+                </div>
+            </form>
+        </center>
+{% for msg in messages %}
+{{msg}}
+{% endfor %}
+
+</body>
+</html>
